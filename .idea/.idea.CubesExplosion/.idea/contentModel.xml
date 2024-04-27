@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\sahar\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sahar\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_CubesExplosion.1728980713.00" t="ExcludeRecursive" />
+    <e p="D:\Unity\CubesExplosion" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scenes" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="Clonable.cs" t="Include" />
+          <e p="Cloner.cs" t="Include" />
+          <e p="ColorRandomizerOnAwake.cs" t="Include" />
+          <e p="Explosion.cs" t="Include" />
+          <e p="IInteractive.cs" t="Include" />
+          <e p="PlayerInput.cs" t="Include" />
+        </e>
+      </e>
+      <e p="CubesExplosion.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
