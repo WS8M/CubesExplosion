@@ -6,11 +6,12 @@
     <e p="D:\Unity\CubesExplosion" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Prefabs" t="Include" />
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Clonable.cs" t="Include" />
           <e p="Cloner.cs" t="Include" />
-          <e p="ColorRandomizerOnAwake.cs" t="Include" />
+          <e p="ColorRandomizer.cs" t="Include" />
           <e p="Explosion.cs" t="Include" />
           <e p="IInteractive.cs" t="Include" />
           <e p="PlayerInput.cs" t="Include" />

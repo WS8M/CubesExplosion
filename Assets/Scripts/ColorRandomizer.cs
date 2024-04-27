@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColorRandomizerOnAwake : MonoBehaviour
+public class ColorRandomizer : MonoBehaviour
 {
     private void Awake() => SetRandomColor();
 
