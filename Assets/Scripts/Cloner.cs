@@ -12,8 +12,11 @@ public class Cloner : MonoBehaviour, IInteractive
 
     private float _creationChance = 1f;
 
+    protected float _multiplierRelativeOfBase = 1f;
+
     public event Action<GameObject[]> Spawned;
-    
+    public event Action<float> Destroyed;
+
     public void Click() => Create();
 
     private void Create()
@@ -22,34 +25,44 @@ public class Cloner : MonoBehaviour, IInteractive
 
         if (isCreationPossible == false)
         {
+            float explosionMultiplier = 1.0f / _multiplierRelativeOfBase;
+            Destroyed?.Invoke(explosionMultiplier);
+
             Destroy(gameObject);
             return;
         }
 
-        int numberOfCopies = Random.Range(_minNumberOfCopies, _maxNumberOfCopies);
         List<Cloner> childrens = new List<Cloner>();
-        
-        for (int i = 0; i < numberOfCopies; i++)
-        {
-            var offsetX = Random.Range(-1f, 1f);
-            var offsetY = 0.1f;
-            var offsetZ = Random.Range(-1f, 1f);
+        int numberOfCopies = GetNumberOfCopies();
 
-            var children = Instantiate(this, gameObject.transform.position + new Vector3(offsetX, offsetY, offsetZ),
-                Quaternion.identity);
-            
-            Vector3 scale = gameObject.transform.localScale * _copyParameterMultiplier;
-            children.gameObject.transform.localScale = scale;
-            
-            var newCreationChance =_creationChance * _copyParameterMultiplier;
-            children._creationChance = newCreationChance;
-            childrens.Add(children);
-        }
+        for (int i = 0; i < numberOfCopies; i++)
+            childrens.Add(BuildClone());
         
         Spawned?.Invoke(childrens.Select(children => children.gameObject).ToArray());
         
         Destroy(gameObject);
     }
 
-   
+    private Cloner BuildClone()
+    {
+        var offsetX = Random.Range(-1f, 1f);
+        var offsetY = 0.1f;
+        var offsetZ = Random.Range(-1f, 1f);
+
+        var children = Instantiate(this, gameObject.transform.position + new Vector3(offsetX, offsetY, offsetZ),Quaternion.identity);
+
+        Vector3 scale = gameObject.transform.localScale * _copyParameterMultiplier;
+        children.gameObject.transform.localScale = scale;
+        children._multiplierRelativeOfBase = _multiplierRelativeOfBase * _copyParameterMultiplier;
+
+        var newCreationChance = _creationChance * _copyParameterMultiplier;
+        children._creationChance = newCreationChance;
+
+        return children;
+    }
+
+    private int GetNumberOfCopies()
+    {
+        return Random.Range(_minNumberOfCopies, _maxNumberOfCopies);
+    }
 }
